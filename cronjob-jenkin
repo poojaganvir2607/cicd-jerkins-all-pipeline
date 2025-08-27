@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    stages {
+        stage("checkout code") {
+            steps{
+                
+            git branch: 'main', url: 'https://github.com/poojaganvir2607/k8s_all_practical.git'
+        
+            }
+        }
+        stage('deploy on k8s') {
+            steps {
+                sh 'kubectl apply -f cronjob.yaml'
+            }
+            
+        }
+            
+    }
+}
